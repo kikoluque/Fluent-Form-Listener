@@ -62,7 +62,7 @@ Al enviarse correctamente el formulario, se dispara un evento en `dataLayer` con
   })(jQuery);
 </script>
 
-
+---
 ## 2. Configura Google Tag Manager
 
 ### 🎯 Activador
