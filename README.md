@@ -16,53 +16,23 @@ Al enviarse correctamente el formulario, se dispara un evento en `dataLayer` con
 
 ---
 
-## 🧩 Código del listener (para copiar/usar)
+## 🧩 Código del listener
 
-```html
-<script>
-  /**
-   * Autor: Kiko Luque
-   * Linkedin: https://es.linkedin.com/in/kiko-luque-analitica
-   * Email: kiko@kikoluque.com
-   * Web: https://www.kikoluque.com
-   *
-   * Descripción:
-   * Listener para formularios de Fluent Form (WordPress).
-   * Envía un evento personalizado a Google Tag Manager (dataLayer) cuando el formulario se envía correctamente.
-   * Incluye el ID del formulario y los datos rellenados por el usuario.
-   * Compatible con múltiples formularios y validado para 2025.
-   */
-  (function($) {
-    $(document).ready(function() {
-      $('.frm-fluent-form').each(function() {
-        var $form = $(this);
+El script completo está disponible en este repositorio: [`listener.js`](./listener.js)
 
-        $form.on('fluentform_submission_success', function() {
-          var formId = $form.attr('data-form_id');
-          var formElement = $form.get(0);
-          var formData = new FormData(formElement);
-          var campos = {};
+### 📌 Instrucciones:
 
-          formData.forEach(function(valor, clave) {
-            if (clave) {
-              var claveLimpia = clave.replace(/\]$/g, '').replace(/[\[\]]/g, '_');
-              campos[claveLimpia] = valor;
-            }
-          });
+1. Abre tu contenedor de **Google Tag Manager**.
+2. Crea una nueva **Etiqueta → HTML personalizada**.
+3. Pega el contenido de `listener.js` en el campo de código.
+4. Marca la opción: ✅ *"Soportar etiquetas que utilizan document.write"* (por compatibilidad).
+5. Asigna como activador: **"Todas las páginas"** o solo donde haya formularios.
+6. Guarda y publica.
 
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'fluent_form_enviado',
-            formId: formId,
-            campos: campos
-          });
-        });
-      });
-    });
-  })(jQuery);
-</script>
+> El script funciona automáticamente en cualquier formulario de Fluent Forms una vez cargado desde GTM.
 
 ---
+
 ## 2. Configura Google Tag Manager
 
 ### 🎯 Activador
