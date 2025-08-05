@@ -18,7 +18,7 @@ Al enviarse correctamente el formulario, se dispara un evento en `dataLayer` con
 
 ## 🧩 Código del listener
 
-El script completo está disponible en este repositorio: [`listener.js`](./listener.js)
+El script completo está disponible en este repositorio: fluentform-listener.js
 
 ### 📌 Instrucciones:
 
